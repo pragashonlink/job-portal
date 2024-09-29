@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: User Management API
+  description: API for managing users in the system, allowing you to create, retrieve, update, and delete users.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+servers:
+  - url: https://api.example.com/api
+
+security:
+  - api_key: []
+
+paths:
+  /jobs:
+    post:
+      summary: Create a new user
+      description: Creates a new user with the provided details.
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        description: User details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad request - Invalid input
+        '409':
+          description: Conflict - User already exists
+      security:
+        - api_key: []
+  
+  /jobs/{job_id}:
+    put:
+      summary: Get user details
+      description: Retrieve details of a specific user.
+      operationId: getUser
+      tags:
+        - Users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The ID of the user to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+      security:
+        - api_key: []
+  
+components:
+  schemas:
+    NewUser:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+        password:
+          type: string
+          format: password
+          example: StrongPassword123
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+        createdAt:
+          type: string
+          format: date-time
+          example: 2024-09-28T12:34:56Z
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2024-09-28T12:34:56Z
+
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.example.com/oauth/authorize
+          tokenUrl: https://auth.example.com/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
