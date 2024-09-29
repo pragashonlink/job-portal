@@ -12,6 +12,10 @@
     - Central entry point for all API requests.
     - Handles requests from external HRM systems to publish jobs.
     - Handles API key validation, rate limiting, and security (OAuth2, JWT, or API Key-based authentication).
+- Client Registration Service:
+    - Handle client registration
+    - API KEY generation and rotation
+    - Manage profile
 - Job Publishing Service: 
     - Validates and processes job postings, then stores them in the Job Database.
 - Job Listing Service: 
@@ -37,17 +41,17 @@
 - Event broker is used to handle asynchronous communication between services
 
 ## How does the employers/clients create an account?
-![sequence-diagram-client-registration](./resources/architecture-diagram.png)
+![sequence-diagram-client-registration](./client-registration-service/client-registration.png)
 
 ## How does the employers/clients publish a job advert?
-![sequence-diagram-publish-job-advert](./resources/architecture-diagram.png)
+![sequence-diagram-publish-job-advert](./job_publish-service/publish-job.png)
 
-[Publish Job Advert API Specification](./publish-job/README.md)
-
-## How does the applicant apply for a job advert?
-![sequence-diagram-publish-job-advert](./resources/architecture-diagram.png)
+[Publish Job Advert API Specification](./job_publish-service/README.md)
 
 ## How does the applicant apply for a job advert?
-![sequence-diagram-publish-job-advert](./resources/architecture-diagram.png)
+![sequence-diagram-job-application](./application-service/job-application.png)
+
+## Generate commission report?
+![sequence-diagram-generate-commission-report](./financial-service/commission-report.png)
 
 
