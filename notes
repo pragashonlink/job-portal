@@ -1,0 +1,52 @@
+Public - UnAuthenticated
+
+Features
+
+View Jobs
+Search Jobs
+Register as a client
+    - Register a user account
+    - Create a company profile
+Apply for a job
+    - Login / Sign up for a user account
+    - Create a profile
+    - Submit application
+
+
+
+Client
+
+Features
+
+Manage company profile
+Rotate API Key
+Publish job advertisements (Rate limited) - 
+    - Return the job ID and job URL to the client
+View Applications
+
+
+Back Office
+
+Features
+
+Un-publish job advertisements
+View commission reports
+
+
+NOTE: 
+
+- It's important to do rate limiting since, our application is going to receive requests to create data from multiple clients. Failing to do so could have consequences such as flooding of requests(DOS attacks).
+
+- Each applicant should Login/Signup before submitting his profile
+
+- Commission calculation per client
+    2 roles * 2 positions
+    (
+        Software Engineer Role - 2 Candidates/Positions,
+        SSE Role - 2 Candidates/Positions
+    )
+
+    SE Applications - Candidate 1 - 50000, Candidate 2 - 60000, Candidate 3 - 70000. Average 60000
+    SSE Applications - Candidate 1 - 150000, Candidate 2 - 160000, Candidate 3 - 170000. Average 160000
+
+    60000 * 0.1 * 2 + 160000 * 0.1 * 2 = 12000 + 32000 = 44,000
