@@ -1,0 +1,62 @@
+server:
+  forward-headers-strategy: framework
+  error:
+    whitelabel:
+      enabled: true
+
+application:
+  database:
+    username: job_finance_user
+    name: job_finance_db
+
+spring:
+  application:
+    name: job-finance
+  main:
+    web-application-type: servlet
+  datasource:
+    url: jdbc:postgresql://\${PSQL_URL}/job_finance_db
+    username: job_finance_user
+    password: \${PSQL_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  data:
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    user: job_finance_user
+    password: \${PSQL_PASSWORD}
+    url: jdbc:postgresql://\${PSQL_URL}/job_finance_db
+  kafka:
+    consumer:
+      auto-offset-reset: latest
+      group-id: ${name}
+springdoc:
+  swagger-ui:
+    path: /documentation
+    enabled: true
+  api-docs:
+    enabled: true
+
+#external client configurations
+external:
+  currency-exchange:
+    baseUrl: https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1
+
+kafka:
+  client-id-prefix: ${name}
+  topic:
+    consume:
+      job-publish: job.publish
+  producer:
+    retries: 0
+    deliveryTimeoutMs: 3000
+    requestTimeoutMs: 3000
+    maxBlockMs: 3000
+  backoff:
+    initial-interval: 1000
+    maximum-interval: 120000
+    multiplier: 2

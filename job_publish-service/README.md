@@ -2,7 +2,7 @@
 
 Base URL for the request to the API
 
-> https://api.example.com/api
+> https://example.com/api
 
 HTTP Verb
 

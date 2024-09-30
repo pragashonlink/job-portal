@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    password: SuperSecret
+
+  flyway:
+    password: SuperSecret

@@ -34,10 +34,10 @@
 - Monitoring: All the service health and metrics is pulled from the services and stored in a time series database to check health of services
 - Alerts: Alert the right channels when some anomalies happen in the system
 
-## Communication Protocols
+## Protocols
 - All API communication happens over HTTPS
 - The job posting end point is secured using API Keys
-- The protected end points are uathenticated using oAuth/OIDC
+- The protected end points are authenticated using oAuth/OIDC
 - Event broker is used to handle asynchronous communication between services
 
 ## How does the employers/clients create an account?
