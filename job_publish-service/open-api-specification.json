@@ -20,6 +20,14 @@
         "operationId": "createJobs",
         "parameters": [
           {
+            "name": "X-Api-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "createJobRequest",
             "in": "query",
             "required": true,
@@ -98,7 +106,7 @@
             "minLength": 100,
             "type": "string",
             "description": "job description",
-            "example": "\u003Ch2\u003EJob Overview:\u003C/h2\u003E\u003Cp\u003EWe are looking for a skilled Software Engineer to join our dynamic team. \n           The ideal candidate will have a passion for technology and a desire to innovate.\u003C/p\u003E\n           \n           \u003Ch2\u003EResponsibilities:\u003C/h2\u003E\u003Cul\u003E\n           \u003Cli\u003EDevelop, test, and maintain software applications.\u003C/li\u003E\n           \u003Cli\u003ECollaborate with cross-functional teams to define, design, and ship new features.\u003C/li\u003E\n           \u003Cli\u003EWrite clean, maintainable code and perform code reviews.\u003C/li\u003E\n           \u003Cli\u003ETroubleshoot and debug applications.\u003C/li\u003E\n           \u003Cli\u003EStay up-to-date with emerging technologies and industry trends.\u003C/li\u003E\u003C/ul\u003E \n        "
+            "example": "<h2>Job Overview:</h2><p>We are looking for a skilled Software Engineer to join our dynamic team. \n The ideal candidate will have a passion for technology and a desire to innovate.</p>\n <h2>Responsibilities:</h2><ul>\n <li>Develop, test, and maintain software applications.</li>\n <li>Collaborate with cross-functional teams to define, design, and ship new features.</li>\n           <li>Write clean, maintainable code and perform code reviews.</li>\n  <li>Troubleshoot and debug applications.</li>\n <li>Stay up-to-date with emerging technologies and industry trends.</li></ul> \n"
           },
           "numberOfPositions": {
             "minimum": 1,
