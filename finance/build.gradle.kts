@@ -19,17 +19,38 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
-	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.5.0")
+	implementation("org.springframework.boot:spring-boot-starter-webflux") {
+//		exclude("io.netty", "netty-codec-http")
+	}
+
+//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+	implementation("org.postgresql:r2dbc-postgresql:1.0.5.RELEASE")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+	implementation("org.flywaydb:flyway-core:10.18.2")
+	implementation("org.flywaydb:flyway-database-postgresql:10.18.2")
+	implementation("org.postgresql:postgresql")
+
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+	implementation("io.r2dbc:r2dbc-h2")
+
+	implementation("org.springframework.kafka:spring-kafka")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-	testImplementation("io.mockk:mockk")
+	testImplementation("io.mockk:mockk:1.13.3")
 	testImplementation("org.springframework.boot:spring-boot-test")
+	testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2")
+	testImplementation("io.kotest:kotest-assertions-core:5.6.0")
 }
 
 kotlin {

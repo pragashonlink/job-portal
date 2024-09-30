@@ -13,19 +13,18 @@ spring:
   application:
     name: job-finance
   main:
-    web-application-type: servlet
-  datasource:
-    url: jdbc:postgresql://\${PSQL_URL}/job_finance_db
+    web-application-type: reactive
+  r2dbc:
+    url: r2dbc:postgresql://${PSQL_URL}/job_finance_db
     username: job_finance_user
     password: \${PSQL_PASSWORD}
-    driver-class-name: org.postgresql.Driver
+    pool:
+      max-size: 10
+      min-idle: 3
   data:
-    jpa:
-      hibernate:
-        ddl-auto: update
-      properties:
-        hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
+    r2dbc:
+      repositories:
+        enabled: true
   flyway:
     user: job_finance_user
     password: \${PSQL_PASSWORD}
@@ -51,12 +50,3 @@ kafka:
   topic:
     consume:
       job-publish: job.publish
-  producer:
-    retries: 0
-    deliveryTimeoutMs: 3000
-    requestTimeoutMs: 3000
-    maxBlockMs: 3000
-  backoff:
-    initial-interval: 1000
-    maximum-interval: 120000
-    multiplier: 2
