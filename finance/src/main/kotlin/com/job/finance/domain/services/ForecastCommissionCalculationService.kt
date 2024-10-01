@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 import java.math.BigDecimal
 
 @Service
-class CommissionCalculationService(
+class ForecastCommissionCalculationService(
     private val applicationRepository: ApplicationRepository,
 ) {
     suspend fun calculate(jobId: Long): BigDecimal {

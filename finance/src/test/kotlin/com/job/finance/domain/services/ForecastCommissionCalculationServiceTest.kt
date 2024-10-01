@@ -17,14 +17,14 @@ import java.time.Instant
 import java.util.*
 
 @ExtendWith(MockKExtension::class)
-class CommissionCalculationServiceTest {
+class ForecastCommissionCalculationServiceTest {
     @MockK
     private lateinit var applicationRepository: ApplicationRepository
-    private lateinit var commissionCalculationService: CommissionCalculationService
+    private lateinit var forecastCommissionCalculationService: ForecastCommissionCalculationService
 
     @BeforeEach
     fun setUp() {
-        commissionCalculationService = CommissionCalculationService(applicationRepository)
+        forecastCommissionCalculationService = ForecastCommissionCalculationService(applicationRepository)
     }
 
     @AfterEach
@@ -36,7 +36,7 @@ class CommissionCalculationServiceTest {
     fun `should return zero commission when job applications are empty`() {
         runTest {
             coEvery { applicationRepository.findAllByJobId(any()) } coAnswers { Collections.emptyList() }
-            val result = commissionCalculationService.calculate(10)
+            val result = forecastCommissionCalculationService.calculate(10)
             result shouldBe BigDecimal.ZERO
         }
     }
@@ -61,7 +61,7 @@ class CommissionCalculationServiceTest {
                 ),
             )
             coEvery { applicationRepository.findAllByJobId(any()) } coAnswers { applications }
-            val result = commissionCalculationService.calculate(10)
+            val result = forecastCommissionCalculationService.calculate(10)
             result shouldBe BigDecimal("15500.0")
         }
     }

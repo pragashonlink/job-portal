@@ -12,9 +12,8 @@ data class JobEntity (
     val id: Long? = null,
     val clientId: Long,
     val jobReferenceId: String,
+    val forecastCommission: BigDecimal,
     val title: String,
-    val totalCommission: BigDecimal,
-    val collectedCommission: BigDecimal,
     val createdAt: Instant,
     @LastModifiedDate
     val updatedAt: Instant? = null,
