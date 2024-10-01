@@ -12,6 +12,7 @@ data class JobEntity (
     val id: Long? = null,
     val clientId: Long,
     val jobReferenceId: String,
+    val numberOfVacancies: Int,
     val forecastCommission: BigDecimal,
     val title: String,
     val createdAt: Instant,

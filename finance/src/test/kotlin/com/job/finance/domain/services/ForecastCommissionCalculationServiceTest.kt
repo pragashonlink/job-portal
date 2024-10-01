@@ -36,7 +36,7 @@ class ForecastCommissionCalculationServiceTest {
     fun `should return zero commission when job applications are empty`() {
         runTest {
             coEvery { applicationRepository.findAllByJobId(any()) } coAnswers { Collections.emptyList() }
-            val result = forecastCommissionCalculationService.calculate(10)
+            val result = forecastCommissionCalculationService.calculate(10, 1)
             result shouldBe BigDecimal.ZERO
         }
     }
@@ -49,7 +49,7 @@ class ForecastCommissionCalculationServiceTest {
                     id = Long.MIN_VALUE,
                     jobId = Long.MIN_VALUE,
                     applicantReferenceId = "application reference id",
-                    expectedSalary = BigDecimal("150000"),
+                    expectedSalary = BigDecimal("140000"),
                     createdAt = Instant.now()
                 ),
                 ApplicationEntity(
@@ -61,8 +61,8 @@ class ForecastCommissionCalculationServiceTest {
                 ),
             )
             coEvery { applicationRepository.findAllByJobId(any()) } coAnswers { applications }
-            val result = forecastCommissionCalculationService.calculate(10)
-            result shouldBe BigDecimal("15500.0")
+            val result = forecastCommissionCalculationService.calculate(10, 3)
+            result shouldBe BigDecimal("45000.0")
         }
     }
 }

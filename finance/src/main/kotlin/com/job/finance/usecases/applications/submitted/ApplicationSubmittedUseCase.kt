@@ -28,7 +28,7 @@ class ApplicationSubmittedUseCase(
         ))
         jobRepository.save(
             job.copy(
-                forecastCommission = forecastCommissionCalculationService.calculate(jobId)
+                forecastCommission = forecastCommissionCalculationService.calculate(jobId, job.numberOfVacancies)
             )
         )
     }

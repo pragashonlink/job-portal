@@ -1,5 +1,5 @@
 spring:
-  datasource:
+  r2dbc:
     password: SuperSecret
 
   flyway:

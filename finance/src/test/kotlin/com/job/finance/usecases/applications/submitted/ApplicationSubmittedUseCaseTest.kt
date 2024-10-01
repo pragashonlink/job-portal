@@ -65,9 +65,10 @@ class ApplicationSubmittedUseCaseTest {
                 jobReferenceId = jobReferenceId,
                 title = "Software Engineer",
                 forecastCommission = BigDecimal("1000.0"),
+                numberOfVacancies = 2,
                 createdAt = createdAt
             )
-            coEvery { forecastCommissionCalculationService.calculate(any()) } coAnswers { BigDecimal("1000.0") }
+            coEvery { forecastCommissionCalculationService.calculate(any(), any()) } coAnswers { BigDecimal("1000.0") }
             coEvery { jobRepository.findByJobReferenceId(any()) } coAnswers {
                 JobEntity(
                     id = 1,
@@ -75,6 +76,7 @@ class ApplicationSubmittedUseCaseTest {
                     jobReferenceId = jobReferenceId,
                     title = "Software Engineer",
                     forecastCommission = BigDecimal.ZERO,
+                    numberOfVacancies = 2,
                     createdAt = createdAt
                 )
             }

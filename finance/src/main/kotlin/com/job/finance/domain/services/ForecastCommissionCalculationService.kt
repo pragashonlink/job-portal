@@ -9,12 +9,12 @@ import java.math.BigDecimal
 class ForecastCommissionCalculationService(
     private val applicationRepository: ApplicationRepository,
 ) {
-    suspend fun calculate(jobId: Long): BigDecimal {
+    suspend fun calculate(jobId: Long, numberOfVacancies: Int): BigDecimal {
         val applications = applicationRepository.findAllByJobId(jobId)
         if (applications.isEmpty()) return BigDecimal.ZERO
 
         val expectedSalarySum = applications.sumOf { it.expectedSalary }
         val averageExpectedSalary = expectedSalarySum / applications.size.toBigDecimal()
-        return averageExpectedSalary * COMMISSION_PERCENTAGE
+        return averageExpectedSalary * numberOfVacancies.toBigDecimal() * COMMISSION_PERCENTAGE
     }
 }

@@ -17,7 +17,6 @@ spring:
   r2dbc:
     url: r2dbc:postgresql://${PSQL_URL}/job_finance_db
     username: job_finance_user
-    password: \${PSQL_PASSWORD}
     pool:
       max-size: 10
       min-idle: 3
@@ -27,7 +26,6 @@ spring:
         enabled: true
   flyway:
     user: job_finance_user
-    password: \${PSQL_PASSWORD}
     url: jdbc:postgresql://\${PSQL_URL}/job_finance_db
   kafka:
     consumer:
