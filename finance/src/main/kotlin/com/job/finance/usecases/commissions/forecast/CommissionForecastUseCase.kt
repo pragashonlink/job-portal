@@ -1,18 +1,23 @@
 package com.job.finance.usecases.commissions.forecast
 
+import com.job.finance.config.Constant.TARGET_CURRENCY
+import com.job.finance.infrastructure.integrations.exchangerate.ExchangeRateClient
 import com.job.finance.repositories.ClientForecastCommission
 import com.job.finance.repositories.JobCommissionForecastRepository
-import kotlinx.coroutines.flow.Flow
 import org.springframework.stereotype.Service
 
 @Service
 class CommissionForecastUseCase(
-    private val jobCommissionForecastRepository: JobCommissionForecastRepository
+    private val jobCommissionForecastRepository: JobCommissionForecastRepository,
+    private val exchangeRateClient: ExchangeRateClient
 ) {
-    suspend fun execute(clientReferenceId: String): Flow<ClientForecastCommission> {
-        return jobCommissionForecastRepository.getClientCommission(clientReferenceId)
-        //fetch client
-        //fetch job
-        //sum all the commissions
+    suspend fun execute(clientReferenceId: String): ClientForecastCommission {
+        val commission = jobCommissionForecastRepository
+            .getClientCommission(clientReferenceId)
+        val exchangeRate = exchangeRateClient.getExchangeRate(
+            baseCurrencyCode = commission.currencyCode.lowercase(),
+            targetCurrencyCode = TARGET_CURRENCY.lowercase()
+        )
+        return commission.copy(totalCommission = commission.totalCommission * exchangeRate)
     }
 }

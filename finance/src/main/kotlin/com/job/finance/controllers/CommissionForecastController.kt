@@ -3,7 +3,6 @@ package com.job.finance.controllers
 import com.job.finance.repositories.ClientForecastCommission
 import com.job.finance.usecases.commissions.forecast.CommissionForecastUseCase
 import io.swagger.v3.oas.annotations.Operation
-import kotlinx.coroutines.flow.toList
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -20,8 +19,8 @@ class CommissionForecastController(
     @GetMapping("/{clientReferenceId}",)
     suspend fun getCommissionForecastReport(
         @PathVariable clientReferenceId: String
-    ): List<ClientForecastCommission> {
-        return commissionForecastUseCase.execute(clientReferenceId).toList()
+    ): ClientForecastCommission {
+        return commissionForecastUseCase.execute(clientReferenceId)
     }
 
 }

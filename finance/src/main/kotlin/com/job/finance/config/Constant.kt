@@ -4,4 +4,5 @@ import java.math.BigDecimal
 
 object Constant {
     val COMMISSION_PERCENTAGE = BigDecimal("0.1") //10%
+    val TARGET_CURRENCY = "USD"
 }
