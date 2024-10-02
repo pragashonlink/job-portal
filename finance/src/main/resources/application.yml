@@ -31,6 +31,8 @@ spring:
     consumer:
       auto-offset-reset: latest
       group-id: ${name}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 springdoc:
   swagger-ui:
     path: /documentation
@@ -46,5 +48,6 @@ external:
 kafka:
   client-id-prefix: ${name}
   topic:
-    consume:
-      job-publish: job.publish
+    application: job_portal_application
+  group-id:
+    finance: job_finance

@@ -1,3 +1,10 @@
 export SPRING_PROFILES_ACTIVE=local
 export PSQL_URL=localhost:5432
 export PSQL_PASSWORD=SuperSecret
+
+
+{
+    "job_reference_id": "job-reference-001",
+    "application_reference_id": "application-reference-003",
+    "expected_salary": 150000
+}

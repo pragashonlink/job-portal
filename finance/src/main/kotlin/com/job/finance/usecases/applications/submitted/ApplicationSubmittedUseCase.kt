@@ -22,7 +22,7 @@ class ApplicationSubmittedUseCase(
         val jobId = job.id!!
         applicationRepository.save(ApplicationEntity(
             jobId = jobId,
-            applicantReferenceId = request.applicationReferenceId,
+            applicationReferenceId = request.applicationReferenceId,
             expectedSalary = request.expectedSalary,
             createdAt = Instant.now()
         ))

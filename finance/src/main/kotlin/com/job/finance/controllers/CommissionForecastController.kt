@@ -18,7 +18,7 @@ class CommissionForecastController(
 ) {
     @Operation(summary = "Display commission forecast from a give client")
     @GetMapping("/{clientReferenceId}",)
-    suspend fun createAuthorizationHold(
+    suspend fun getCommissionForecastReport(
         @PathVariable clientReferenceId: String
     ): List<ClientForecastCommission> {
         return commissionForecastUseCase.execute(clientReferenceId).toList()

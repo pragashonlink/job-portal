@@ -36,7 +36,7 @@ dependencies {
 	implementation("org.postgresql:postgresql")
 
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-	implementation("io.r2dbc:r2dbc-h2")
+	implementation("org.slf4j:slf4j-api:2.0.0")
 
 	implementation("org.springframework.kafka:spring-kafka")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

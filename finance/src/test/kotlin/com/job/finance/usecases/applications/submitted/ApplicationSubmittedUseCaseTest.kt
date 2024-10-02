@@ -55,7 +55,7 @@ class ApplicationSubmittedUseCaseTest {
             val applicationEntitySlot = slot<ApplicationEntity>()
             val expectedApplicationEntity = ApplicationEntity(
                 jobId = 1,
-                applicantReferenceId = applicationReferenceId,
+                applicationReferenceId = applicationReferenceId,
                 expectedSalary = BigDecimal("10000.0"),
                 createdAt = createdAt
             )

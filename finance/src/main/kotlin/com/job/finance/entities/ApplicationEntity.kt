@@ -11,7 +11,7 @@ data class ApplicationEntity(
     @Id
     val id: Long? = null,
     val jobId: Long,
-    val applicantReferenceId: String,
+    val applicationReferenceId: String,
     val expectedSalary: BigDecimal,
     val createdAt: Instant,
     @LastModifiedDate

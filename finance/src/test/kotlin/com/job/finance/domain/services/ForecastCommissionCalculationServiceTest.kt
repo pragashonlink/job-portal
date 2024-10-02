@@ -48,14 +48,14 @@ class ForecastCommissionCalculationServiceTest {
                 ApplicationEntity(
                     id = Long.MIN_VALUE,
                     jobId = Long.MIN_VALUE,
-                    applicantReferenceId = "application reference id",
+                    applicationReferenceId = "application reference id",
                     expectedSalary = BigDecimal("140000"),
                     createdAt = Instant.now()
                 ),
                 ApplicationEntity(
                     id = Long.MAX_VALUE,
                     jobId = Long.MIN_VALUE,
-                    applicantReferenceId = "application reference id 2",
+                    applicationReferenceId = "application reference id 2",
                     expectedSalary = BigDecimal("160000"),
                     createdAt = Instant.now()
                 ),
