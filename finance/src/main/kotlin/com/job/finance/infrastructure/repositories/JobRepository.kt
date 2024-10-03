@@ -1,6 +1,6 @@
-package com.job.finance.repositories
+package com.job.finance.infrastructure.repositories
 
-import com.job.finance.entities.JobEntity
+import com.job.finance.infrastructure.entities.JobEntity
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
 

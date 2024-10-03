@@ -1,10 +1,10 @@
 package com.job.finance.usecases.applications.submitted
 
 import com.job.finance.domain.services.ForecastCommissionCalculationService
-import com.job.finance.entities.ApplicationEntity
-import com.job.finance.entities.JobEntity
-import com.job.finance.repositories.ApplicationRepository
-import com.job.finance.repositories.JobRepository
+import com.job.finance.infrastructure.entities.ApplicationEntity
+import com.job.finance.infrastructure.entities.JobEntity
+import com.job.finance.infrastructure.repositories.ApplicationRepository
+import com.job.finance.infrastructure.repositories.JobRepository
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks
 import io.mockk.coEvery

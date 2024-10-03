@@ -1,4 +1,4 @@
-package com.job.finance.repositories
+package com.job.finance.infrastructure.repositories
 
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
 import org.springframework.r2dbc.core.awaitOne

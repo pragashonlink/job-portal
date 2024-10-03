@@ -1,9 +1,9 @@
 package com.job.finance.usecases.applications.submitted
 
 import com.job.finance.domain.exceptions.InvalidJobReferenceException
-import com.job.finance.entities.ApplicationEntity
-import com.job.finance.repositories.ApplicationRepository
-import com.job.finance.repositories.JobRepository
+import com.job.finance.infrastructure.entities.ApplicationEntity
+import com.job.finance.infrastructure.repositories.ApplicationRepository
+import com.job.finance.infrastructure.repositories.JobRepository
 import com.job.finance.domain.services.ForecastCommissionCalculationService
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
@@ -20,12 +20,14 @@ class ApplicationSubmittedUseCase(
         val job = jobRepository.findByJobReferenceId(request.jobReferenceId)
             ?: throw InvalidJobReferenceException("Job reference id is not valid ${request.jobReferenceId}")
         val jobId = job.id!!
-        applicationRepository.save(ApplicationEntity(
+        applicationRepository.save(
+            ApplicationEntity(
             jobId = jobId,
             applicationReferenceId = request.applicationReferenceId,
             expectedSalary = request.expectedSalary,
             createdAt = Instant.now()
-        ))
+        )
+        )
         jobRepository.save(
             job.copy(
                 forecastCommission = forecastCommissionCalculationService.calculate(jobId, job.numberOfVacancies)

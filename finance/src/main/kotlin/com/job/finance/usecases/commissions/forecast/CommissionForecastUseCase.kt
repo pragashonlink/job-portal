@@ -2,8 +2,8 @@ package com.job.finance.usecases.commissions.forecast
 
 import com.job.finance.config.Constant.TARGET_CURRENCY
 import com.job.finance.infrastructure.integrations.exchangerate.ExchangeRateClient
-import com.job.finance.repositories.ClientForecastCommission
-import com.job.finance.repositories.JobCommissionForecastRepository
+import com.job.finance.infrastructure.repositories.ClientForecastCommission
+import com.job.finance.infrastructure.repositories.JobCommissionForecastRepository
 import org.springframework.stereotype.Service
 
 @Service

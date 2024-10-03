@@ -1,7 +1,7 @@
 package com.job.finance.domain.services
 
-import com.job.finance.entities.ApplicationEntity
-import com.job.finance.repositories.ApplicationRepository
+import com.job.finance.infrastructure.entities.ApplicationEntity
+import com.job.finance.infrastructure.repositories.ApplicationRepository
 import io.kotest.matchers.shouldBe
 import io.mockk.clearAllMocks
 import io.mockk.coEvery

@@ -1,6 +1,6 @@
 package com.job.finance.controllers
 
-import com.job.finance.repositories.ClientForecastCommission
+import com.job.finance.infrastructure.repositories.ClientForecastCommission
 import com.job.finance.usecases.commissions.forecast.CommissionForecastUseCase
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.validation.annotation.Validated
