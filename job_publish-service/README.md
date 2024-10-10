@@ -62,22 +62,20 @@ Request Rate Limiting
 Parameters
 
 Headers: [Request Headers](#request-headers) <br />
-
 Body: [Request Body](#job-post)
 
 API Response Statuses
 
-| Status                | Meaning    |  Description     |  Schema                 |
-| ------------------  | ------- | ----------------- | ------------------------ |
-| 201        | OK  | Interest accrual breakdown returned.    | [Job Post Response](#job-post)      |
-| 400              | BadRequest  | A validation error occurred | [Error Response](#error-response) |
-| 401              | UnAuthorized  | Unauthorized | [Error Response](#error-response) |
-| 403              | ForBidden  | ForBidden | [Error Response](#error-response) |
+| Status   | Meaning        |  Description                          |  Schema                           |
+| -------  | ---------------| ------------------------------------- | --------------------------------- |
+| 201      | OK             | Interest accrual breakdown returned.  | [Job Post Response](#job-post)    |
+| 400      | BadRequest     | A validation error occurred           | [Error Response](#error-response) |
+| 401      | UnAuthorized   | Unauthorized                          | [Error Response](#error-response) |
+| 404      | NotFound       | Job not found                         | [Error Response](#error-response) |
 
 CURL command
 
 > [Create Job](./create_job_command.curl)
-
 
 #### Update job post
 
@@ -99,8 +97,7 @@ API Response Statuses
 
 CURL command
 
-> [Create Job](./create_job_command.curl)
-
+> [Update Job](./update_job_command.curl)
 
 Open API Speicification
 
