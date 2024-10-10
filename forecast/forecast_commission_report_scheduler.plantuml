@@ -10,15 +10,15 @@ participant "currency exchange api" as CEA
 participant "commission forecast db" as CFDB
 
 scheduler -> CFS: Scheduled to trigger at 12:01 mid night
-CFS -> CFDB: Fetch unique currency codes from clients table
-    return currency codes
-    loop through all currency codes
+CFS -> CFDB: Fetch all client records
+    loop through all client records
         CFS -> RC: Fetch exchange rate for the currency code
-            return exchange rate or null
-        CFS -> CEA: Fetch exchange rate for the currency code
+            return exchange rate
+        CFS -> CFS: exchange rate not available in Redis Cache
+        CFS -> CEA: Fetch exchange rate for the currency code 
             return exchange rate
         CFS -> RC: Store exchange rate against currency code
-        CFS -> CFDB: Update all client records with exchange rate
+        CFS -> CFS: Recalculate the pending commission for client's jobs
+        CFS -> CFDB: Store the commissions for each job to the forecast_commissions table
     end
-
 @enduml
