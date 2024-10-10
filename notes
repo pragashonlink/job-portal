@@ -50,3 +50,21 @@ NOTE:
     SSE Applications - Candidate 1 - 150000, Candidate 2 - 160000, Candidate 3 - 170000. Average 160000
 
     60000 * 0.1 * 2 + 160000 * 0.1 * 2 = 12000 + 32000 = 44,000
+
+
+Reporting Service
+
+- Listen to client registered event
+- Listen to job posted event
+- Listen to application submitted event
+
+Scheduler
+
+At midnight run the task to do the following,
+
+- Fetch all clients
+- Fetch sum of all their pending job application's avg salary
+- Fetch the exchange rate in Redis(Redis cache should clear within 24 hours)
+- If Redis is not available fetch from the API
+- Run the USD conversion calculations
+- Post this to commission_forecast table(clear the table and insert/upsert the row)

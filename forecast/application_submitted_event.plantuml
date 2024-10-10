@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber 1.1
+
+participant applicant
+participant "job portal" as JP
+participant "application service" as AS
+participant "forecast service" as FS
+participant kafka
+participant "forecast db" as FDb
+
+applicant -> JP: submit application for the given job
+JP -> kafka: Upon successfully saving the application publishes event JobApplicationSubmittedEvent
+    note right
+    {
+        jobReferenceId: XXX,
+        applicationReferenceId: XXX,
+        expectedSalary: 100000
+    }
+    end note
+    return SUCCESS
+kafka -> FS: forecast service will consume the event
+FS -> FDb: store the application details to db
+
+@enduml

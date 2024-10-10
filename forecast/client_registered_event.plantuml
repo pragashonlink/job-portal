@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber 1.1
+
+participant "client registration service" as CRS
+participant "forecast service" as FS
+participant kafka
+participant "forecast db" as FDb
+
+CRS -> kafka: Publish "ClientRegistered" event
+kafka -> FS: Consume "ClientRegistered" event
+FS -> FDb: Create a new client record
+
+@enduml

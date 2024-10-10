@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber 1.1
+
+participant scheduler
+participant "commission forecast service" as CFS
+participant "redis cache" as RC
+participant "currency exchange api" as CEA
+participant "commission forecast db" as CFDB
+
+scheduler -> CFS: Scheduled to trigger at 12:01 mid night
+CFS -> CFDB: Fetch unique currency codes from clients table
+    return currency codes
+    loop through all currency codes
+        CFS -> RC: Fetch exchange rate for the currency code
+            return exchange rate or null
+        CFS -> CEA: Fetch exchange rate for the currency code
+            return exchange rate
+        CFS -> RC: Store exchange rate against currency code
+        CFS -> CFDB: Update all client records with exchange rate
+    end
+
+@enduml

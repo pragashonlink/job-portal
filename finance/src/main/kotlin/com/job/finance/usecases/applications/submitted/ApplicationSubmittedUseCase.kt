@@ -22,11 +22,11 @@ class ApplicationSubmittedUseCase(
         val jobId = job.id!!
         applicationRepository.save(
             ApplicationEntity(
-            jobId = jobId,
-            applicationReferenceId = request.applicationReferenceId,
-            expectedSalary = request.expectedSalary,
-            createdAt = Instant.now()
-        )
+                jobId = jobId,
+                applicationReferenceId = request.applicationReferenceId,
+                expectedSalary = request.expectedSalary,
+                createdAt = Instant.now()
+            )
         )
         jobRepository.save(
             job.copy(

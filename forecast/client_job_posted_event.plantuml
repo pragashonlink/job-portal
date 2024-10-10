@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber 1.1
+
+participant "job publish service" as JPS
+participant "forecast service" as FS
+participant kafka
+participant "forecast db" as FDb
+
+JPS -> kafka: Publish "JobPosted" event
+kafka -> FS: Consume "JobPosted" event
+FS -> FDb: Create a job record
+
+@enduml
