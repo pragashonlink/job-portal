@@ -40,7 +40,6 @@ The response to a request will contain either an error response or a payload in 
 - Published
 - Hidden
 
-
 #### JobPost {#job-post}
 | Name                | Type    |  Description     |
 | ------------------  | ------- | ----------------- |
@@ -62,7 +61,8 @@ Request Rate Limiting
 
 Parameters
 
-Headers: [Request Headers](#request-headers)
+Headers: [Request Headers](#request-headers) <br />
+
 Body: [Request Body](#job-post)
 
 API Response Statuses
@@ -77,6 +77,30 @@ API Response Statuses
 CURL command
 
 > [Create Job](./create_job_command.curl)
+
+
+#### Update job post
+
+> PUT /jobs/{job_id}
+
+Parameters
+
+Headers: [Request Headers](#request-headers) <br />
+Body: [Request Body](#job-post)
+
+API Response Statuses
+
+| Status                | Meaning    |  Description     |  Schema                 |
+| ------------------  | ------- | ----------------- | ------------------------ |
+| 204        | OK  | Interest accrual breakdown returned.    | No Response      |
+| 400              | BadRequest  | A validation error occurred | [Error Response](#error-response) |
+| 401              | UnAuthorized  | Unauthorized | [Error Response](#error-response) |
+| 404              | Job Not Found  | NotFound | [Error Response](#error-response) |
+
+CURL command
+
+> [Create Job](./create_job_command.curl)
+
 
 Open API Speicification
 
