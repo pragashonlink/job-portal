@@ -2,7 +2,7 @@
 ![usecase-diagram](./resources/usecase-diagram.png)
 
 ## Highlevel Architecture Diagram
-![architecture-diagram](./resources/architecture-diagram.png)
+![architecture-diagram](./resources/backend-architecture-diagram.png)
 
 ## Diagram in words
 - External HRM System: 
@@ -30,7 +30,7 @@
     - Authentication service supports and oAuth/OIDC
 
 ## Monitoring, Logging and Alerting
-- Logs: All the service's logs are aggregated and stored in a indexed database so that developers, support teams and search and look through logs. The logs include application logs, network logs, etc...
+- Logs: All the service logs are aggregated and stored in a indexed database so that developers, support teams and search and look through logs. The logs include application logs, network logs, etc...
 - Monitoring: All the service health and metrics is pulled from the services and stored in a time series database to check health of services
 - Alerts: Alert the right channels when some anomalies happen in the system
 
